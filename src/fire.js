@@ -12,7 +12,8 @@ var config = {
  
 var fire = firebase.initializeApp(config);
 
-const docRef = firestore.doc("samples/anduData");
+const db = firebase.firestore();
+const docRef = db.doc("samples/anduData");
 const outputHeader = document.querySelector("#anduOutput");
 const inputTextField = document.querySelector("#latestAnduStatus");
 const saveButton = document.querySelector("#saveButton");
