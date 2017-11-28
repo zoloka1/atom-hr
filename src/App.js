@@ -11,6 +11,7 @@ class App extends Component {
     this.state = { anduStatus : "...loading..." };
     this.savePressed = this.savePressed.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
           <h1 className="App-title">Hello World!</h1>
         </header>
         <div>
-          <h1 className="anduOutput"> Andu egy: </h1>
+          <h1 className="anduOutput"> Andu egy:</h1>
           <input type="textfield" id="latestAnduStatus" value={this.state.anduStatus} onChange={this.handleChange} />
           <button id="saveButton" onClick={this.savePressed}> save </button>
         </div>
@@ -30,6 +31,15 @@ class App extends Component {
   }
 
   componentDidMount() {
+    var db = firebase.firestore();
+    const docRef = db.doc("samples/anduData");
+    docRef.get().then(function(doc){
+      if (doc && doc.exists) {
+        const anduData = doc.data();
+        this.setState({anduStatus: anduData});
+      }
+    })
+    
   }
   
   handleChange(event) {
