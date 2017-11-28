@@ -33,10 +33,11 @@ class App extends Component {
   componentDidMount() {
     var db = firebase.firestore();
     const docRef = db.doc("samples/anduData");
+    var _this = this;
     docRef.get().then(function(doc){
       if (doc && doc.exists) {
         const anduData = doc.data();
-        this.setState({anduStatus: anduData});
+        _this.setState({anduStatus: anduData});
       }
     })
     
