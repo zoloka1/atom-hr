@@ -37,8 +37,10 @@ class App extends Component {
     docRef.get().then(function(doc){
       if (doc && doc.exists) {
         const anduData = doc.data();
-        _this.setState({anduStatus: anduData});
+        _this.setState({anduStatus: anduData.anduStatus});
       }
+    }).catch(function(error){
+        console.log("fk this...", error);
     })
     
   }
