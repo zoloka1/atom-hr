@@ -4,64 +4,63 @@ import './App.css';
 import fire from './fire';
 import firebase from 'firebase';
 import firestore from 'firebase/firestore';
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, Jumbotron } from 'reactstrap';
+import Questions from './questions';
+
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { anduStatus : "...loading..." };
-    this.savePressed = this.savePressed.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.state = {template: "loading..."} 
+    
   }
+
+  componentDidMount() {
+    var id = this.getIdFromUrl();
+    var db = firebase.firestore();
+    const docRef = db.doc("forms/"+id);
+    var _this = this;
+    docRef.get().then(function(doc){
+      if (doc && doc.exists) {
+        const stuff = doc.data();
+        _this.setState({template: stuff.template});
+
+      }
+    }).catch(function(error){
+        console.log("fk this...", error);
+      })
+    
+  }
+
+  getIdFromUrl(url)  {
+    var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+    var obj = {};
+    if (queryString) {
+      queryString = queryString.split('#')[0];
+      var arr = queryString.split('&');
+      for (var i=0; i<arr.length; i++) {
+        var a = arr[i].split('=');
+        var paramValue = typeof(a[1])==='undefined' ? true : a[1];
+        obj = paramValue;
+      }
+    }
+    return obj;
+  }
+
+
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hello World!</h1>
-        </header>
-        <div>
-          <h1 className="anduOutput"> Andu egy:</h1>
-          <input type="textfield" id="latestAnduStatus" value={this.state.anduStatus} onChange={this.handleChange} />
-          <button id="saveButton" onClick={this.savePressed}> save </button>
-        </div>
+      <div>
+        <Jumbotron>
+          <Questions />
+        </Jumbotron>
       </div>
     );
   }
 
-  componentDidMount() {
-    var db = firebase.firestore();
-    const docRef = db.doc("samples/anduData");
-    var _this = this;
-    docRef.get().then(function(doc){
-      if (doc && doc.exists) {
-        const anduData = doc.data();
-        _this.setState({anduStatus: anduData.anduStatus});
-      }
-    }).catch(function(error){
-        console.log("fk this...", error);
-    })
-    
-  }
   
-  handleChange(event) {
-    this.setState({ anduStatus : event.target.value });
-  }
-
-  savePressed() {
-    var db = firebase.firestore();
-    const textToSave = this.state.anduStatus;
-    console.log("I am going to save " + textToSave + " to firestore");
-    const docRef = db.doc("samples/anduData");
-    docRef.set({
-      anduStatus: textToSave
-    }).then(function(){
-      console.log("status saved")
-    }).catch(function(error){
-      console.log("error",error);
-    })
-  }
 
 }
 

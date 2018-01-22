@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "atom-hr"
+    "default": "atom-hr",
+    "atomhr": "atom-hr"
   }
 }

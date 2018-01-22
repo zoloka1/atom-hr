@@ -1,0 +1,32 @@
+[debug] [2017-12-06T20:43:16.921Z] ----------------------------------------------------------------------
+[debug] [2017-12-06T20:43:16.923Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\zotya\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2017-12-06T20:43:16.923Z] CLI Version:   3.16.0
+[debug] [2017-12-06T20:43:16.924Z] Platform:      win32
+[debug] [2017-12-06T20:43:16.924Z] Node Version:  v8.9.1
+[debug] [2017-12-06T20:43:16.924Z] Time:          Wed Dec 06 2017 21:43:16 GMT+0100 (Közép-európai téli idő )
+[debug] [2017-12-06T20:43:16.924Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-06T20:43:16.935Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-06T20:43:16.935Z] > authorizing via signed-in user
+[debug] [2017-12-06T20:43:16.937Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/atom-hr  
+  
+ Wed Dec 06 2017 21:43:16 GMT+0100 (Közép-európai téli idő )
+[debug] [2017-12-06T20:43:17.950Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-06T20:43:17.952Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/atom-hr/tokens  
+  
+ Wed Dec 06 2017 21:43:17 GMT+0100 (Közép-európai téli idő )
+[debug] [2017-12-06T20:43:18.784Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\zotya\atom-hr'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-12-06T20:43:19.609Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/atom-hr  
+  
+ Wed Dec 06 2017 21:43:19 GMT+0100 (Közép-európai téli idő )
+[debug] [2017-12-06T20:43:19.609Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/atom-hr/apiKeys  
+  
+ Wed Dec 06 2017 21:43:19 GMT+0100 (Közép-európai téli idő )
+[debug] [2017-12-06T20:43:20.533Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-06T20:43:20.593Z] <<< HTTP RESPONSE 200
+[info] +  functions: helloWorld: http://localhost:5000/atom-hr/us-central1/helloWorld
+[info] +  functions: sendEmail: http://localhost:5000/atom-hr/us-central1/sendEmail
