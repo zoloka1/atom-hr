@@ -22,9 +22,9 @@ class Radio1to5 extends Component {
 
     }
 
-    handleChange(value) {
-        this.state.handleChange(this.state.question.id, value);
-        console.log(value)
+    handleChange(e) {
+        this.state.handleChange(this.state.question.id, e.target.value);
+        
 
     }
     
